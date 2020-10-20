@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  margin: 30px;
+  background-color: #f9ed68;
+}
+nav::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.nav__position {
+  list-style: none;
+  float: left;
+}
+.nav__position li {
+  display: inline-block;
+  margin-left: 30px;
+}
+.nav__position li:first-child {
+  margin: 0;
+}
+.nav__position a:link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.buttons {
+  float: right;
+}
+
+.btn-main:link, .btn-hot {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  width: 150px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.btn-main:link {
+  background-color: #f08a5d;
+}
+.btn-main:hover {
+  background-color: #ec682e;
+}
+
+.btn-hot:link {
+  background-color: #b83b5e;
+}
+.btn-hot:hover {
+  background-color: #cb5b7b;
+}
+
+/*# sourceMappingURL=main.css.map */
