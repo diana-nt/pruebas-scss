@@ -1,0 +1,202 @@
+@import url(https://fonts.googleapis.com/css?family=Oxygen:400,700,300);
+
+$mainText: #FFF;
+$frontBackground: #36A9E3;
+$backBackground: #36E370;
+
+
+/*
+* Overrides
+*/
+body {
+  font: 300 16px Oxygen;
+  background-color: #ECECEC;
+  color: $mainText;
+  text-align: center;
+}
+h1 {
+  font: 700 38px Oxygen;
+  color: #313131;
+}
+h2 {
+  font: 400 16px Oxygen;
+  color: #808080;
+}
+p {
+  margin: 0;
+  color: $mainText;
+  background-color: $frontBackground;
+}
+a {
+  color: $mainText;
+  background-color: $backBackground;
+  text-decoration: none;
+}
+
+
+
+/*
+* Utilidades
+*/
+.container {
+  height: 280px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+
+
+/*
+* Botones
+*/
+.button-group {
+  margin-top: 50px;
+}
+
+/* General Button Styles */
+.button {
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  width: 120px;
+  margin-right: 15px;
+  cursor: pointer;
+
+  &:last-child { margin-right: 0px; }
+
+  .inner {
+    display: block;
+    text-align: center;
+    line-height: 60px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    .child {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+    }
+  }
+}
+
+/* Animaciones */
+.fade {
+  .inner {
+    a {
+      opacity: 0;
+      transition: opacity .5s ease;
+      -moz-transition: opacity .5s ease;
+      -webkit-transition: opacity .5s ease;
+    }
+    &:hover a {
+      opacity: 1;
+      transition: opacity .5s ease;
+      -moz-transition: opacity .5s ease;
+      -webkit-transition: opacity .5s ease;
+    }
+  }
+}
+
+.flip1 {
+  perspective: 800px;
+  -moz-perspective: 800px;
+  -webkit-perspective: 800px;
+
+  .inner {
+    transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -webkit-transition: -webkit-transform 1s;
+
+    .child {
+      backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    a {
+      transform: rotateX(180deg);
+      -moz-transform: rotateX(180deg);
+      -webkit-transform: rotateX(180deg);
+    }
+    &:hover {
+      transform: rotateX(180deg);
+      -moz-transform: rotateX(180deg);
+      -webkit-transform: rotateX(180deg);
+    }
+  }
+}
+/* Flip Horizontal Animation */
+.flip2 {
+  perspective: 800px;
+  -moz-perspective: 800px;
+  -webkit-perspective: 800px;
+
+  .inner {
+    transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -webkit-transition: -webkit-transform 1s;
+
+    .child {
+      backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    a {
+      transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+    &:hover {
+      transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+  }
+}
+
+
+.open {
+  perspective: 800px;
+  -moz-perspective: 800px;
+  -webkit-perspective: 800px;
+
+  .inner {
+    transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+
+    p {
+      transform-origin: 50% 0%;
+      -moz-transform-origin: 50% 0%;
+      -webkit-transform-origin: 50% 0%;
+      transition: transform .5s ease;
+      -moz-transition: -moz-transform .5s ease;
+      -webkit-transition: -webkit-transform .5s ease;
+    }
+    a {
+      z-index: -5;
+    }
+    &:hover {
+      p {
+        transform: rotateX( 90deg );
+        -moz-transform: rotateX( 90deg );
+        -webkit-transform: rotateX( 90deg );
+        transform-origin: 50% 0%;
+        -moz-transform-origin: 50% 0%;
+        -webkit-transform-origin: 50% 0%;
+        transition: transform .5s ease;
+        -moz-transition: -moz-transform .5s ease;
+        -webkit-transition: -webkit-transform .5s ease;
+      }
+    }
+  }
+}
