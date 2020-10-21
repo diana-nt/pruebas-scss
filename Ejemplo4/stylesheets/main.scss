@@ -1,0 +1,130 @@
+/*@function PI() { @return 3.14159265359; }
+
+@function pow($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+@function fact($value) {
+  $result: 1;
+
+  @if $value == 0 {
+    @return $result;
+  }
+
+  @for $index from 1 through $value {
+    $result: $result * $index;
+  }
+
+  @return $result;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  @if $unit == deg {
+    $unitless: $unitless / 180 * PI();
+  }
+  @return $unitless;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  @for $i from 0 through 10 {
+    $fact: fact(2 * $i + 1);
+    $pow: pow($angle, (2 * $i + 1)) / fact;
+    $sin: $sin + pow(-1, $i) ;
+  }
+  @return $sin;
+}*/
+/* power */
+@function pow($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+/* factorial */
+@function fact($number) {
+  $value: 1;
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+
+/* pi */
+@function pi() {
+  @return 3.1415926535897932384626433832795028841971694;
+}
+
+/* radian */
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  // If the angle has 'deg' as unit, convert to radians.
+  @if $unit == deg {
+    $unitless: $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+/* sine */
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+  @return $sin;
+}
+.atom {
+  text-align: center;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+  margin: 1px;
+  display: inline-block;
+  border: 10px #1893e7 solid;
+
+  animation: oscillate 3s ease-in-out infinite;
+
+  @for $i from 1 through 15 {
+    &:nth-child(#{$i}) {
+      animation-delay: ( #{sin(.4) * ($i)}s );
+      //animation-delay: ( #{ 0.3894 * ($i)}s );
+      //$var: sin(.4);
+      //animation-delay: ($var * $i)s;
+    }
+  }
+}
+
+@keyframes oscillate {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(200px); }
+}
+
+
